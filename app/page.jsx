@@ -167,7 +167,7 @@ export default function Home() {
             <div className="bg-gray-900 rounded-lg overflow-hidden transition-transform hover:scale-105">
               <div className="h-48 relative">
                 <Image
-                  src="/Signconnect.png"
+                  src="/SignConnect.png"
                   alt="SignConnect Project"
                   fill
                   className="object-cover"
