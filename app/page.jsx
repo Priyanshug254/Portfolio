@@ -26,9 +26,11 @@ export default function Home() {
             Contact
           </Link>
         </nav>
-        <Button variant="outline" className="border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-white">
-          Resume
-        </Button>
+        <a href="/resume.pdf" download="resume.pdf">
+          <Button variant="outline" className="border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-white">
+            Resume
+          </Button>
+        </a>
       </header>
 
       {/* Hero Section */}
@@ -49,8 +51,8 @@ export default function Home() {
             </Link>
             <Link href="#contact">
               <Button variant="outline" className="border-white h-8">
-              Contact Me
-            </Button>
+                Contact Me
+              </Button>
             </Link>
           </div>
         </div>
