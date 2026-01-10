@@ -35,29 +35,30 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-20 flex flex-col md:flex-row items-center">
-        <div className="md:w-1/2 mb-10 md:mb-0">
-          <h1 className="text-5xl md:text-6xl font-bold mb-4">
-            Hi, I'm <span className="text-purple-500">Priyanshu Gupta</span>
+        <div className="md:w-1/2 mb-10 md:mb-0 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+          <h1 className="text-5xl md:text-6xl font-extrabold mb-4 tracking-tight">
+            Hi, I'm <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">Priyanshu Gupta</span>
           </h1>
-          <h2 className="text-2xl md:text-3xl text-gray-400 mb-6">Full Stack Developer</h2>
-          <p className="text-lg text-gray-300 mb-8 max-w-lg">
+          <h2 className="text-2xl md:text-3xl text-gray-400 mb-6 font-light">Full Stack Developer</h2>
+          <p className="text-lg text-gray-300 mb-8 max-w-lg leading-relaxed">
             I build exceptional digital experiences that are fast, accessible, visually appealing, and responsive.
           </p>
-          <div className="flex space-x-8">
+          <div className="flex space-x-6">
             <Link href="#projects">
-              <Button className="bg-purple-600 hover:bg-purple-800 flex h-8">
+              <Button className="bg-purple-600 hover:bg-purple-700 hover:scale-105 transition-all duration-300 shadow-lg shadow-purple-500/20 flex h-10 px-6 text-base">
                 View Projects <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
             <Link href="#contact">
-              <Button variant="outline" className="border-white h-8">
+              <Button variant="outline" className="border-white/20 hover:bg-white/10 hover:text-white hover:border-white transition-all h-10 px-6 text-base">
                 Contact Me
               </Button>
             </Link>
           </div>
         </div>
-        <div className="md:w-1/2 flex justify-center">
-          <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-purple-500">
+        <div className="md:w-1/2 flex justify-center relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-3xl opacity-20 animate-pulse"></div>
+          <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-purple-500/50 shadow-2xl">
             <Image src="/meimage.png" alt="Profile" fill className="object-cover" />
           </div>
         </div>
@@ -97,108 +98,117 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 bg-black">
+      <section id="projects" className="py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-12 text-center">My Projects</h2>
+          <h2 className="text-4xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500">My Projects</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Project 1 - AlzCare */}
-            <div className="bg-gray-900 rounded-lg overflow-hidden transition-transform hover:scale-105">
-              <div className="h-48 relative">
+            <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/10 hover:border-purple-500/50 group">
+              <div className="h-48 relative overflow-hidden">
                 <Image
                   src="/AlzCare.png"
                   alt="AlzCare Project"
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                  <span className="text-white font-medium">View Details</span>
+                </div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold mb-2">AlzCare</h3>
-                <p className="text-gray-400 mb-4">
+                <h3 className="text-xl font-bold mb-2 text-white group-hover:text-purple-400 transition-colors">AlzCare</h3>
+                <p className="text-gray-400 mb-4 text-sm leading-relaxed">
                   A healthcare application designed to assist Alzheimer's patients and their caregivers with daily
                   management and monitoring.
                 </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="px-3 py-1 bg-purple-900 text-purple-200 rounded-full text-sm">React</span>
-                  <span className="px-3 py-1 bg-purple-900 text-purple-200 rounded-full text-sm">Node.js</span>
-                  <span className="px-3 py-1 bg-purple-900 text-purple-200 rounded-full text-sm">MongoDB</span>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  <span className="px-3 py-1 bg-purple-500/10 text-purple-300 rounded-full text-xs font-medium border border-purple-500/20">React</span>
+                  <span className="px-3 py-1 bg-purple-500/10 text-purple-300 rounded-full text-xs font-medium border border-purple-500/20">Node.js</span>
+                  <span className="px-3 py-1 bg-purple-500/10 text-purple-300 rounded-full text-xs font-medium border border-purple-500/20">MongoDB</span>
                 </div>
                 <div className="flex space-x-4">
-                  <Link href="#" className="text-purple-400 hover:text-purple-300">
-                    <Github className="h-6 w-6" />
+                  <Link href="#" className="text-gray-400 hover:text-white transition-colors">
+                    <Github className="h-5 w-5" />
                   </Link>
-                  <Link href="#" className="text-purple-400 hover:text-purple-300">
-                    <ArrowRight className="h-6 w-6" />
+                  <Link href="#" className="text-gray-400 hover:text-white transition-colors">
+                    <ArrowRight className="h-5 w-5" />
                   </Link>
                 </div>
               </div>
             </div>
 
             {/* Project 2 - PeoplesConnect */}
-            <div className="bg-gray-900 rounded-lg overflow-hidden transition-transform hover:scale-105">
-              <div className="h-48 relative">
+            <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/10 hover:border-purple-500/50 group">
+              <div className="h-48 relative overflow-hidden">
                 <Image
                   src="/Peopleconnect.png"
                   alt="PeoplesConnect Project"
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                  <span className="text-white font-medium">View Details</span>
+                </div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold mb-2">PeoplesConnect</h3>
-                <p className="text-gray-400 mb-4">
+                <h3 className="text-xl font-bold mb-2 text-white group-hover:text-purple-400 transition-colors">PeoplesConnect</h3>
+                <p className="text-gray-400 mb-4 text-sm leading-relaxed">
                   A social networking platform that connects people with similar interests and facilitates community
                   building.
                 </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="px-3 py-1 bg-purple-900 text-purple-200 rounded-full text-sm">Next.js</span>
-                  <span className="px-3 py-1 bg-purple-900 text-purple-200 rounded-full text-sm">Prisma</span>
-                  <span className="px-3 py-1 bg-purple-900 text-purple-200 rounded-full text-sm">PostgreSQL</span>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  <span className="px-3 py-1 bg-purple-500/10 text-purple-300 rounded-full text-xs font-medium border border-purple-500/20">Next.js</span>
+                  <span className="px-3 py-1 bg-purple-500/10 text-purple-300 rounded-full text-xs font-medium border border-purple-500/20">Prisma</span>
+                  <span className="px-3 py-1 bg-purple-500/10 text-purple-300 rounded-full text-xs font-medium border border-purple-500/20">PostgreSQL</span>
                 </div>
                 <div className="flex space-x-4">
-                  <Link href="#" className="text-purple-400 hover:text-purple-300">
-                    <Github className="h-6 w-6" />
+                  <Link href="#" className="text-gray-400 hover:text-white transition-colors">
+                    <Github className="h-5 w-5" />
                   </Link>
-                  <Link href="#" className="text-purple-400 hover:text-purple-300">
-                    <ArrowRight className="h-6 w-6" />
+                  <Link href="#" className="text-gray-400 hover:text-white transition-colors">
+                    <ArrowRight className="h-5 w-5" />
                   </Link>
                 </div>
               </div>
             </div>
 
             {/* Project 3 - SignConnect */}
-            <div className="bg-gray-900 rounded-lg overflow-hidden transition-transform hover:scale-105">
-              <div className="h-48 relative">
+            <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/10 hover:border-purple-500/50 group">
+              <div className="h-48 relative overflow-hidden">
                 <Image
                   src="/SignConnect.png"
                   alt="SignConnect Project"
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                  <span className="text-white font-medium">View Details</span>
+                </div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold mb-2">SignConnect</h3>
-                <p className="text-gray-400 mb-4">
+                <h3 className="text-xl font-bold mb-2 text-white group-hover:text-purple-400 transition-colors">SignConnect</h3>
+                <p className="text-gray-400 mb-4 text-sm leading-relaxed">
                   An application that translates sign language to text and speech in real-time, bridging communication
                   gaps for the hearing impaired.
                 </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="px-3 py-1 bg-purple-900 text-purple-200 rounded-full text-sm">React</span>
-                  <span className="px-3 py-1 bg-purple-900 text-purple-200 rounded-full text-sm">TensorFlow</span>
-                  <span className="px-3 py-1 bg-purple-900 text-purple-200 rounded-full text-sm">Flask</span>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  <span className="px-3 py-1 bg-purple-500/10 text-purple-300 rounded-full text-xs font-medium border border-purple-500/20">React</span>
+                  <span className="px-3 py-1 bg-purple-500/10 text-purple-300 rounded-full text-xs font-medium border border-purple-500/20">TensorFlow</span>
+                  <span className="px-3 py-1 bg-purple-500/10 text-purple-300 rounded-full text-xs font-medium border border-purple-500/20">Flask</span>
                 </div>
                 <div className="flex space-x-4">
-                  <Link href="#" className="text-purple-400 hover:text-purple-300">
-                    <Github className="h-6 w-6" />
+                  <Link href="#" className="text-gray-400 hover:text-white transition-colors">
+                    <Github className="h-5 w-5" />
                   </Link>
-                  <Link href="#" className="text-purple-400 hover:text-purple-300">
-                    <ArrowRight className="h-6 w-6" />
+                  <Link href="#" className="text-gray-400 hover:text-white transition-colors">
+                    <ArrowRight className="h-5 w-5" />
                   </Link>
                 </div>
               </div>
             </div>
           </div>
           <div className="text-center mt-12">
-            <Button className="bg-purple-600 hover:bg-purple-700">
+            <Button className="bg-purple-600 hover:bg-purple-700 flex items-center shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all">
               View All Projects <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
@@ -206,65 +216,54 @@ export default function Home() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-20 bg-gray-900">
+      <section id="skills" className="py-20 bg-black/20">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-12 text-center">My Skills</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <h2 className="text-4xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500">My Skills</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {/* Skill categories */}
-            <div className="bg-black p-6 rounded-lg">
-              <h3 className="text-xl font-bold mb-4 text-purple-400">Frontend</h3>
-              <ul className="space-y-2 text-gray-300">
-                <li>React / Next.js</li>
-                <li>JavaScript / HTML / CSS</li>
-                <li>Tailwind CSS</li>
-                <li>Redux</li>
-                <li>Responsive Design</li>
-              </ul>
+            <div className="bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/5 hover:border-purple-500/30 transition-colors">
+              <h3 className="text-xl font-bold mb-6 text-purple-400 border-b border-white/10 pb-2">Frontend</h3>
+              <div className="flex flex-wrap gap-3">
+                {["React", "Next.js", "Javascript", "HTML/CSS", "Tailwind CSS", "Redux"].map((skill) => (
+                  <span key={skill} className="px-3 py-1.5 bg-white/5 rounded-lg text-sm text-gray-300 border border-white/10 hover:border-purple-500/50 hover:bg-purple-500/10 transition-colors cursor-default">
+                    {skill}
+                  </span>
+                ))}
+              </div>
             </div>
 
-            <div className="bg-black p-6 rounded-lg">
-              <h3 className="text-xl font-bold mb-4 text-purple-400">Backend</h3>
-              <ul className="space-y-2 text-gray-300">
-                <li>Node.js / Express</li>
-                <li>Python / Flask</li>
-                <li>RESTful APIs</li>
-                <li>Authentication</li>
-                <li>Server Management</li>
-              </ul>
+            <div className="bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/5 hover:border-purple-500/30 transition-colors">
+              <h3 className="text-xl font-bold mb-6 text-purple-400 border-b border-white/10 pb-2">Backend</h3>
+              <div className="flex flex-wrap gap-3">
+                {["Node.js", "Express", "Python", "Flask", "RESTful APIs", "Auth"].map((skill) => (
+                  <span key={skill} className="px-3 py-1.5 bg-white/5 rounded-lg text-sm text-gray-300 border border-white/10 hover:border-purple-500/50 hover:bg-purple-500/10 transition-colors cursor-default">
+                    {skill}
+                  </span>
+                ))}
+              </div>
             </div>
 
-            <div className="bg-black p-6 rounded-lg">
-              <h3 className="text-xl font-bold mb-4 text-purple-400">Database</h3>
-              <ul className="space-y-2 text-gray-300">
-                <li>MongoDB</li>
-                <li>PostgreSQL</li>
-                <li>MySQL</li>
-                <li>Firebase</li>
-                <li>Database Design</li>
-              </ul>
-            </div>
-
-            <div className="bg-black p-6 rounded-lg">
-              <h3 className="text-xl font-bold mb-4 text-purple-400">Other</h3>
-              <ul className="space-y-2 text-gray-300">
-                <li>Git / GitHub</li>
-                <li>Machine Learning</li>
-                <li>TensorFlow</li>
-                <li>Problem Solving</li>
-                <li>Team Collaboration</li>
-              </ul>
+            <div className="bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/5 hover:border-purple-500/30 transition-colors">
+              <h3 className="text-xl font-bold mb-6 text-purple-400 border-b border-white/10 pb-2">Tools & Others</h3>
+              <div className="flex flex-wrap gap-3">
+                {["Git/GitHub", "MongoDB", "PostgreSQL", "Firebase", "Machine Learning", "TensorFlow"].map((skill) => (
+                  <span key={skill} className="px-3 py-1.5 bg-white/5 rounded-lg text-sm text-gray-300 border border-white/10 hover:border-purple-500/50 hover:bg-purple-500/10 transition-colors cursor-default">
+                    {skill}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-black">
+      <section id="contact" className="py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-12 text-center">Get In Touch</h2>
-          <div className="flex flex-col md:flex-row gap-10">
+          <h2 className="text-4xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500">Get In Touch</h2>
+          <div className="flex flex-col md:flex-row gap-10 max-w-5xl mx-auto">
             <div className="md:w-1/2">
-              <form className="space-y-6">
+              <form className="space-y-6 bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/10">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
@@ -273,7 +272,7 @@ export default function Home() {
                     <input
                       type="text"
                       id="name"
-                      className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white"
+                      className="w-full px-4 py-3 bg-black/50 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white placeholder-gray-600 transition-all focus:border-purple-500/50"
                       placeholder="Your Name"
                     />
                   </div>
@@ -284,7 +283,7 @@ export default function Home() {
                     <input
                       type="email"
                       id="email"
-                      className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white"
+                      className="w-full px-4 py-3 bg-black/50 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white placeholder-gray-600 transition-all focus:border-purple-500/50"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -296,7 +295,7 @@ export default function Home() {
                   <input
                     type="text"
                     id="subject"
-                    className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white"
+                    className="w-full px-4 py-3 bg-black/50 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white placeholder-gray-600 transition-all focus:border-purple-500/50"
                     placeholder="Subject"
                   />
                 </div>
@@ -307,52 +306,54 @@ export default function Home() {
                   <textarea
                     id="message"
                     rows={6}
-                    className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white"
+                    className="w-full px-4 py-3 bg-black/50 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white placeholder-gray-600 transition-all focus:border-purple-500/50resize-none"
                     placeholder="Your message..."
                   ></textarea>
                 </div>
-                <Button className="w-full bg-purple-600 hover:bg-purple-700 py-6">Send Message</Button>
+                <Button className="w-full bg-purple-600 hover:bg-purple-700 py-6 text-lg font-medium shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40">Send Message</Button>
               </form>
             </div>
             <div className="md:w-1/2">
-              <div className="bg-gray-900 p-8 rounded-lg h-full">
-                <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
-                <div className="space-y-6">
-                  <div className="flex items-start">
-                    <Mail className="h-6 w-6 text-purple-400 mr-4 mt-1" />
-                    <div>
-                      <h4 className="text-lg font-medium">Email</h4>
-                      <p className="text-gray-400">guptapriyanshu254@gmail.com</p>
+              <div className="bg-gradient-to-br from-purple-900/20 to-black p-8 rounded-2xl h-full border border-white/10 flex flex-col justify-between">
+                <div>
+                  <h3 className="text-2xl font-bold mb-6 text-white">Contact Information</h3>
+                  <div className="space-y-6">
+                    <div className="flex items-start group">
+                      <Mail className="h-6 w-6 text-purple-400 mr-4 mt-1 group-hover:scale-110 transition-transform" />
+                      <div>
+                        <h4 className="text-lg font-medium text-gray-200">Email</h4>
+                        <p className="text-gray-400">guptapriyanshu254@gmail.com</p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="flex items-start">
-                    <div className="h-6 w-6 text-purple-400 mr-4 mt-1 flex items-center justify-center">📍</div>
-                    <div>
-                      <h4 className="text-lg font-medium">Location</h4>
-                      <p className="text-gray-400">Ghaziabad, Uttar Pradesh, India</p>
+                    <div className="flex items-start group">
+                      <div className="h-6 w-6 text-purple-400 mr-4 mt-1 flex items-center justify-center group-hover:scale-110 transition-transform">📍</div>
+                      <div>
+                        <h4 className="text-lg font-medium text-gray-200">Location</h4>
+                        <p className="text-gray-400">Ghaziabad, Uttar Pradesh, India</p>
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div className="mt-10">
-                  <h4 className="text-lg font-medium mb-4">Follow Me</h4>
+                  <h4 className="text-lg font-medium mb-4 text-gray-200">Follow Me</h4>
                   <div className="flex space-x-4">
                     <Link
                       href="https://github.com/Priyanshug254"
-                      className="bg-gray-800 p-3 rounded-full text-purple-400 hover:bg-purple-600 hover:text-white transition-colors"
+                      className="bg-white/5 p-3 rounded-full text-purple-400 hover:bg-purple-600 hover:text-white transition-all hover:scale-110 border border-white/10"
                     >
-                      <Github className="h-6 w-6" />
+                      <Github className="h-5 w-5" />
                     </Link>
                     <Link
                       href="https://github.com/Priyanshug254"
-                      className="bg-gray-800 p-3 rounded-full text-purple-400 hover:bg-purple-600 hover:text-white transition-colors"
+                      className="bg-white/5 p-3 rounded-full text-purple-400 hover:bg-purple-600 hover:text-white transition-all hover:scale-110 border border-white/10"
                     >
-                      <Linkedin className="h-6 w-6" />
+                      <Linkedin className="h-5 w-5" />
                     </Link>
                     <Link
                       href="https://x.com/Priyans45961979"
-                      className="bg-gray-800 p-3 rounded-full text-purple-400 hover:bg-purple-600 hover:text-white transition-colors"
+                      className="bg-white/5 p-3 rounded-full text-purple-400 hover:bg-purple-600 hover:text-white transition-all hover:scale-110 border border-white/10"
                     >
-                      <Twitter className="h-6 w-6" />
+                      <Twitter className="h-5 w-5" />
                     </Link>
                   </div>
                 </div>
