@@ -262,8 +262,9 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500">Get In Touch</h2>
           <div className="flex flex-col md:flex-row gap-10 max-w-5xl mx-auto">
-            <div className="md:w-1/2">
-              <form className="space-y-6 bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/10">
+            <div className="md:w-1/2 relative group">
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+              <form className="relative space-y-6 bg-black/40 backdrop-blur-md p-8 rounded-2xl border border-white/10 shadow-2xl">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
@@ -272,7 +273,7 @@ export default function Home() {
                     <input
                       type="text"
                       id="name"
-                      className="w-full px-4 py-3 bg-black/50 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white placeholder-gray-600 transition-all focus:border-purple-500/50"
+                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white placeholder-gray-500 transition-all focus:bg-white/10"
                       placeholder="Your Name"
                     />
                   </div>
@@ -283,7 +284,7 @@ export default function Home() {
                     <input
                       type="email"
                       id="email"
-                      className="w-full px-4 py-3 bg-black/50 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white placeholder-gray-600 transition-all focus:border-purple-500/50"
+                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white placeholder-gray-500 transition-all focus:bg-white/10"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -295,7 +296,7 @@ export default function Home() {
                   <input
                     type="text"
                     id="subject"
-                    className="w-full px-4 py-3 bg-black/50 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white placeholder-gray-600 transition-all focus:border-purple-500/50"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white placeholder-gray-500 transition-all focus:bg-white/10"
                     placeholder="Subject"
                   />
                 </div>
@@ -306,11 +307,11 @@ export default function Home() {
                   <textarea
                     id="message"
                     rows={6}
-                    className="w-full px-4 py-3 bg-black/50 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white placeholder-gray-600 transition-all focus:border-purple-500/50resize-none"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white placeholder-gray-500 transition-all focus:bg-white/10 resize-none"
                     placeholder="Your message..."
                   ></textarea>
                 </div>
-                <Button className="w-full bg-purple-600 hover:bg-purple-700 py-6 text-lg font-medium shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40">Send Message</Button>
+                <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 py-6 text-lg font-bold tracking-wide shadow-lg shadow-purple-900/20 hover:shadow-purple-700/40 transform hover:-translate-y-1 transition-all">Send Message</Button>
               </form>
             </div>
             <div className="md:w-1/2">
@@ -364,27 +365,30 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 py-10">
+      <footer className="bg-black/20 backdrop-blur-md border-t border-white/10 py-8 mt-20">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
-              <Link href="/" className="text-xl font-bold">
+            <div className="mb-4 md:mb-0 text-center md:text-left">
+              <Link href="/" className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
                 Priyanshu Gupta
               </Link>
+              <p className="text-gray-500 text-sm mt-1">Building digital experiences.</p>
             </div>
-            <div className="text-gray-400 text-sm">
-              © {new Date().getFullYear()} Priyanshu Gupta. All rights reserved.
-            </div>
-            <div className="mt-4 md:mt-0 flex space-x-4">
-              <Link href="https://github.com/Priyanshug254" className="text-gray-400 hover:text-purple-400">
+
+            <div className="flex space-x-6 mb-4 md:mb-0">
+              <Link href="https://github.com/Priyanshug254" className="text-gray-400 hover:text-purple-400 transform hover:scale-110 transition-all">
                 <Github className="h-5 w-5" />
               </Link>
-              <Link href="https://github.com/Priyanshug254" className="text-gray-400 hover:text-purple-400">
+              <Link href="https://github.com/Priyanshug254" className="text-gray-400 hover:text-purple-400 transform hover:scale-110 transition-all">
                 <Linkedin className="h-5 w-5" />
               </Link>
-              <Link href="https://x.com/Priyans45961979" className="text-gray-400 hover:text-purple-400">
+              <Link href="https://x.com/Priyans45961979" className="text-gray-400 hover:text-purple-400 transform hover:scale-110 transition-all">
                 <Twitter className="h-5 w-5" />
               </Link>
+            </div>
+
+            <div className="text-gray-500 text-sm">
+              © {new Date().getFullYear()} Priyanshu Gupta.
             </div>
           </div>
         </div>
