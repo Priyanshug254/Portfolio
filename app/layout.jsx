@@ -28,12 +28,15 @@ export const metadata = {
   },
 }
 
+import { ScrollToTop } from "@/components/ScrollToTop"
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           {children}
+          <ScrollToTop />
         </ThemeProvider>
       </body>
     </html>
