@@ -4,6 +4,7 @@ import { ArrowRight, Github, Linkedin, Mail, Twitter } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Header } from "@/components/Header"
+import { TypewriterEffect } from "@/components/TypewriterEffect"
 import { personalInfo, projects, skills, socialLinks } from "@/lib/data"
 
 export default function Home() {
@@ -17,7 +18,9 @@ export default function Home() {
           <h1 className="text-5xl md:text-6xl font-extrabold mb-4 tracking-tight">
             Hi, I'm <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">{personalInfo.name}</span>
           </h1>
-          <h2 className="text-2xl md:text-3xl text-gray-400 mb-6 font-light">{personalInfo.role}</h2>
+          <h2 className="text-2xl md:text-3xl text-gray-400 mb-6 font-light">
+            <TypewriterEffect texts={[personalInfo.role, "React Enthusiast", "Student", "Web Developer"]} />
+          </h2>
           <p className="text-lg text-gray-300 mb-8 max-w-lg leading-relaxed">
             {personalInfo.bio}
           </p>
