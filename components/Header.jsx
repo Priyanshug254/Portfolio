@@ -1,12 +1,34 @@
 "use client"
 
 import * as React from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export function Header() {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false)
+    const [activeSection, setActiveSection] = useState("")
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setActiveSection(entry.target.id)
+                    }
+                })
+            },
+            { threshold: 0.5 }
+        )
+
+        document.querySelectorAll("section[id]").forEach((section) => {
+            observer.observe(section)
+        })
+
+        return () => observer.disconnect()
+    }, [])
+
 
     return (
         <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-black/50 backdrop-blur-xl supports-[backdrop-filter]:bg-black/20">
@@ -15,21 +37,21 @@ export function Header() {
                     Priyanshu Gupta
                 </Link>
                 <nav className="hidden md:flex items-center space-x-8">
-                    <Link href="#about" className="text-sm font-medium text-gray-300 hover:text-white transition-colors relative group">
+                    <Link href="#about" className={`text-sm font-medium transition-colors relative group ${activeSection === 'about' ? 'text-purple-400' : 'text-gray-300 hover:text-white'}`}>
                         About
-                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-500 transition-all group-hover:w-full"></span>
+                        <span className={`absolute -bottom-1 left-0 h-0.5 bg-purple-500 transition-all ${activeSection === 'about' ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
                     </Link>
-                    <Link href="#projects" className="text-sm font-medium text-gray-300 hover:text-white transition-colors relative group">
+                    <Link href="#projects" className={`text-sm font-medium transition-colors relative group ${activeSection === 'projects' ? 'text-purple-400' : 'text-gray-300 hover:text-white'}`}>
                         Projects
-                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-500 transition-all group-hover:w-full"></span>
+                        <span className={`absolute -bottom-1 left-0 h-0.5 bg-purple-500 transition-all ${activeSection === 'projects' ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
                     </Link>
-                    <Link href="#skills" className="text-sm font-medium text-gray-300 hover:text-white transition-colors relative group">
+                    <Link href="#skills" className={`text-sm font-medium transition-colors relative group ${activeSection === 'skills' ? 'text-purple-400' : 'text-gray-300 hover:text-white'}`}>
                         Skills
-                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-500 transition-all group-hover:w-full"></span>
+                        <span className={`absolute -bottom-1 left-0 h-0.5 bg-purple-500 transition-all ${activeSection === 'skills' ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
                     </Link>
-                    <Link href="#contact" className="text-sm font-medium text-gray-300 hover:text-white transition-colors relative group">
+                    <Link href="#contact" className={`text-sm font-medium transition-colors relative group ${activeSection === 'contact' ? 'text-purple-400' : 'text-gray-300 hover:text-white'}`}>
                         Contact
-                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-500 transition-all group-hover:w-full"></span>
+                        <span className={`absolute -bottom-1 left-0 h-0.5 bg-purple-500 transition-all ${activeSection === 'contact' ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
                     </Link>
                     <a href="/resume.pdf" download="resume.pdf">
                         <Button variant="outline" className="border-purple-500/50 text-purple-400 hover:bg-purple-500 hover:text-white hover:border-purple-500 transition-all shadow-[0_0_15px_rgba(168,85,247,0.1)] hover:shadow-[0_0_20px_rgba(168,85,247,0.3)]">
