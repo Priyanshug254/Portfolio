@@ -5,6 +5,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { ThemeToggle } from "@/components/ThemeToggle"
 
 export function Header() {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false)
@@ -53,6 +54,7 @@ export function Header() {
                         Contact
                         <span className={`absolute -bottom-1 left-0 h-0.5 bg-purple-500 transition-all ${activeSection === 'contact' ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
                     </Link>
+                    <ThemeToggle />
                     <a href="/resume.pdf" download="resume.pdf">
                         <Button variant="outline" className="border-purple-500/50 text-purple-400 hover:bg-purple-500 hover:text-white hover:border-purple-500 transition-all shadow-[0_0_15px_rgba(168,85,247,0.1)] hover:shadow-[0_0_20px_rgba(168,85,247,0.3)]">
                             Resume
@@ -99,8 +101,9 @@ export function Header() {
                         >
                             Contact
                         </Link>
-                        <div className="pt-2">
-                            <a href="/resume.pdf" download="resume.pdf" className="block w-full">
+                        <div className="flex justify-between items-center px-4 pt-2">
+                            <ThemeToggle />
+                            <a href="/resume.pdf" download="resume.pdf" className="flex-1 ml-4">
                                 <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white">
                                     Resume
                                 </Button>
