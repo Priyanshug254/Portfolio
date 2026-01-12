@@ -3,11 +3,13 @@
 import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
+import confetti from "canvas-confetti"
 import { ArrowRight, Github, Linkedin, Mail, Twitter } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Header } from "@/components/Header"
 import { TypewriterEffect } from "@/components/TypewriterEffect"
+import { ParticleBackground } from "@/components/ParticleBackground"
 import { personalInfo, projects, skills, socialLinks } from "@/lib/data"
 
 export default function Home() {
@@ -17,15 +19,26 @@ export default function Home() {
     ? projects
     : projects.filter(project => project.tags.includes(filter) || (filter === "Backend" && project.tags.includes("Node.js")) || (filter === "Frontend" && project.tags.includes("React")))
 
+
   const categories = ["All", "React", "Next.js", "Node.js"]
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 }
+    })
+  }
 
   return (
     <div className="min-h-screen bg-black text-white selection:bg-purple-500/30">
       <Header />
 
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-20 flex flex-col md:flex-row items-center">
-        <div className="md:w-1/2 mb-10 md:mb-0 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+      <section className="container mx-auto px-4 py-20 flex flex-col md:flex-row items-center relative overflow-hidden">
+        <ParticleBackground />
+        <div className="md:w-1/2 mb-10 md:mb-0 animate-in fade-in slide-in-from-bottom-4 duration-1000 z-10">
           <h1 className="text-5xl md:text-6xl font-extrabold mb-4 tracking-tight">
             Hi, I'm <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">{personalInfo.name}</span>
           </h1>
@@ -102,8 +115,8 @@ export default function Home() {
                 key={category}
                 onClick={() => setFilter(category)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${filter === category
-                    ? "bg-purple-600 text-white shadow-lg shadow-purple-500/25 scale-105"
-                    : "bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white"
+                  ? "bg-purple-600 text-white shadow-lg shadow-purple-500/25 scale-105"
+                  : "bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white"
                   }`}
               >
                 {category}
@@ -184,7 +197,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row gap-10 max-w-5xl mx-auto">
             <div className="md:w-1/2 relative group">
               <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-              <form className="relative space-y-6 bg-black/40 backdrop-blur-md p-8 rounded-2xl border border-white/10 shadow-2xl">
+              <form onSubmit={handleSubmit} className="relative space-y-6 bg-black/40 backdrop-blur-md p-8 rounded-2xl border border-white/10 shadow-2xl">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
@@ -231,7 +244,7 @@ export default function Home() {
                     placeholder="Your message..."
                   ></textarea>
                 </div>
-                <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 py-6 text-lg font-bold tracking-wide shadow-lg shadow-purple-900/20 hover:shadow-purple-700/40 transform hover:-translate-y-1 transition-all">Send Message</Button>
+                <Button type="submit" className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 py-6 text-lg font-bold tracking-wide shadow-lg shadow-purple-900/20 hover:shadow-purple-700/40 transform hover:-translate-y-1 transition-all">Send Message</Button>
               </form>
             </div>
             <div className="md:w-1/2">

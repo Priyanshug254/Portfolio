@@ -29,12 +29,16 @@ export const metadata = {
 }
 
 import { ScrollToTop } from "@/components/ScrollToTop"
+import { ScrollProgress } from "@/components/ScrollProgress"
+import { CustomCursor } from "@/components/CustomCursor"
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+          <ScrollProgress />
+          <CustomCursor />
           {children}
           <ScrollToTop />
         </ThemeProvider>
