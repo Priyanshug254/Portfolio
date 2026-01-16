@@ -6,6 +6,7 @@ import Link from "next/link"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/ThemeToggle"
+import { MagneticButton } from "@/components/MagneticButton"
 
 export function Header() {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false)
@@ -56,9 +57,9 @@ export function Header() {
                     </Link>
                     <ThemeToggle />
                     <a href="/resume.pdf" download="resume.pdf">
-                        <Button variant="outline" className="border-purple-500/50 text-purple-400 hover:bg-purple-500 hover:text-white hover:border-purple-500 transition-all shadow-[0_0_15px_rgba(168,85,247,0.1)] hover:shadow-[0_0_20px_rgba(168,85,247,0.3)]">
+                        <MagneticButton className="border border-purple-500/50 text-purple-400 hover:bg-purple-500 hover:text-white hover:border-purple-500 transition-all shadow-[0_0_15px_rgba(168,85,247,0.1)] hover:shadow-[0_0_20px_rgba(168,85,247,0.3)] h-10 px-4 py-2 rounded-md font-medium bg-transparent">
                             Resume
-                        </Button>
+                        </MagneticButton>
                     </a>
                 </nav>
 
