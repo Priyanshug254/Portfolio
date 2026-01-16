@@ -10,6 +10,10 @@ import { Button } from "@/components/ui/button"
 import { Header } from "@/components/Header"
 import { TypewriterEffect } from "@/components/TypewriterEffect"
 import { ParticleBackground } from "@/components/ParticleBackground"
+import { TiltCard } from "@/components/TiltCard"
+import { AnimatedSectionHeader } from "@/components/AnimatedSectionHeader"
+import { SkillBadge } from "@/components/SkillBadge"
+import { MagneticButton } from "@/components/MagneticButton"
 import { personalInfo, projects, skills, socialLinks } from "@/lib/data"
 
 export default function Home() {
@@ -50,14 +54,14 @@ export default function Home() {
           </p>
           <div className="flex space-x-6">
             <Link href="#projects">
-              <Button className="bg-purple-600 hover:bg-purple-700 hover:scale-105 transition-all duration-300 shadow-lg shadow-purple-500/20 flex h-10 px-6 text-base">
+              <MagneticButton className="bg-purple-600 hover:bg-purple-700 hover:scale-105 transition-all duration-300 shadow-lg shadow-purple-500/20 flex items-center justify-center h-10 px-6 text-base rounded-md text-white font-medium">
                 View Projects <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
+              </MagneticButton>
             </Link>
             <Link href="#contact">
-              <Button variant="outline" className="border-white/20 hover:bg-white/10 hover:text-white hover:border-white transition-all h-10 px-6 text-base">
+              <MagneticButton className="border border-white/20 hover:bg-white/10 hover:text-white hover:border-white transition-all h-10 px-6 text-base rounded-md text-white font-medium">
                 Contact Me
-              </Button>
+              </MagneticButton>
             </Link>
           </div>
         </div>
@@ -72,7 +76,7 @@ export default function Home() {
       {/* About Section */}
       <section id="about" className="bg-white/5 py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500">About Me</h2>
+          <AnimatedSectionHeader title="About Me" />
           <div className="flex flex-col md:flex-row items-center">
             <div className="md:w-1/2 mb-10 md:mb-0 relative">
               <div className="absolute inset-0 bg-purple-500/20 blur-3xl rounded-full"></div>
@@ -106,7 +110,7 @@ export default function Home() {
       {/* Projects Section */}
       <section id="projects" className="py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500">My Projects</h2>
+          <AnimatedSectionHeader title="My Projects" />
 
           {/* Project Filters */}
           <div className="flex justify-center gap-4 mb-12 flex-wrap">
@@ -126,44 +130,46 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProjects.map((project, index) => (
-              <div key={index} className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/10 hover:border-purple-500/50 group">
-                <div className="h-48 relative overflow-hidden">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                    <span className="text-white font-medium">View Details</span>
+              <TiltCard key={index} className="h-full">
+                <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/10 hover:border-purple-500/50 group h-full flex flex-col">
+                  <div className="h-48 relative overflow-hidden flex-shrink-0">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                      <span className="text-white font-medium">View Details</span>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold mb-2 text-white group-hover:text-purple-400 transition-colors">{project.title}</h3>
+                    <p className="text-gray-400 mb-4 text-sm leading-relaxed">
+                      {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {project.tags.map((tag) => (
+                        <span key={tag} className="px-3 py-1 bg-purple-500/10 text-purple-300 rounded-full text-xs font-medium border border-purple-500/20">{tag}</span>
+                      ))}
+                    </div>
+                    <div className="flex space-x-4">
+                      <Link href={project.links.github} className="text-gray-400 hover:text-white transition-colors">
+                        <Github className="h-5 w-5" />
+                      </Link>
+                      <Link href="#" className="text-gray-400 hover:text-white transition-colors">
+                        <ArrowRight className="h-5 w-5" />
+                      </Link>
+                    </div>
                   </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2 text-white group-hover:text-purple-400 transition-colors">{project.title}</h3>
-                  <p className="text-gray-400 mb-4 text-sm leading-relaxed">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tags.map((tag) => (
-                      <span key={tag} className="px-3 py-1 bg-purple-500/10 text-purple-300 rounded-full text-xs font-medium border border-purple-500/20">{tag}</span>
-                    ))}
-                  </div>
-                  <div className="flex space-x-4">
-                    <Link href={project.links.github} className="text-gray-400 hover:text-white transition-colors">
-                      <Github className="h-5 w-5" />
-                    </Link>
-                    <Link href="#" className="text-gray-400 hover:text-white transition-colors">
-                      <ArrowRight className="h-5 w-5" />
-                    </Link>
-                  </div>
-                </div>
-              </div>
+              </TiltCard>
             ))}
           </div>
           <div className="text-center mt-12">
-            <Button className="bg-purple-600 hover:bg-purple-700 flex items-center shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all">
+            <MagneticButton className="bg-purple-600 hover:bg-purple-700 flex items-center justify-center shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all h-10 px-4 py-2 rounded-md text-white font-medium inline-flex">
               View All Projects <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            </MagneticButton>
           </div>
         </div>
       </section>
@@ -171,7 +177,7 @@ export default function Home() {
       {/* Skills Section */}
       <section id="skills" className="py-20 bg-black/20">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500">My Skills</h2>
+          <AnimatedSectionHeader title="My Skills" />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {/* Skill categories loop */}
             {Object.entries(skills).map(([category, items]) => (
@@ -179,9 +185,9 @@ export default function Home() {
                 <h3 className="text-xl font-bold mb-6 text-purple-400 border-b border-white/10 pb-2 capitalize">{category}</h3>
                 <div className="flex flex-wrap gap-3">
                   {items.map((skill) => (
-                    <span key={skill} className="px-3 py-1.5 bg-white/5 rounded-lg text-sm text-gray-300 border border-white/10 hover:border-purple-500/50 hover:bg-purple-500/10 transition-colors cursor-default">
+                    <SkillBadge key={skill}>
                       {skill}
-                    </span>
+                    </SkillBadge>
                   ))}
                 </div>
               </div>
@@ -193,7 +199,7 @@ export default function Home() {
       {/* Contact Section */}
       <section id="contact" className="py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500">Get In Touch</h2>
+          <AnimatedSectionHeader title="Get In Touch" />
           <div className="flex flex-col md:flex-row gap-10 max-w-5xl mx-auto">
             <div className="md:w-1/2 relative group">
               <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
@@ -244,7 +250,7 @@ export default function Home() {
                     placeholder="Your message..."
                   ></textarea>
                 </div>
-                <Button type="submit" className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 py-6 text-lg font-bold tracking-wide shadow-lg shadow-purple-900/20 hover:shadow-purple-700/40 transform hover:-translate-y-1 transition-all">Send Message</Button>
+                <MagneticButton type="submit" className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 py-6 text-lg font-bold tracking-wide shadow-lg shadow-purple-900/20 hover:shadow-purple-700/40 transform hover:-translate-y-1 transition-all rounded-md text-white">Send Message</MagneticButton>
               </form>
             </div>
             <div className="md:w-1/2">
