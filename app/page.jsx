@@ -14,6 +14,8 @@ import { TiltCard } from "@/components/TiltCard"
 import { AnimatedSectionHeader } from "@/components/AnimatedSectionHeader"
 import { SkillBadge } from "@/components/SkillBadge"
 import { MagneticButton } from "@/components/MagneticButton"
+import { Spotlight } from "@/components/Spotlight"
+import { StaggeredText } from "@/components/StaggeredText"
 import { personalInfo, projects, skills, socialLinks } from "@/lib/data"
 
 export default function Home() {
@@ -44,7 +46,7 @@ export default function Home() {
         <ParticleBackground />
         <div className="md:w-1/2 mb-10 md:mb-0 animate-in fade-in slide-in-from-bottom-4 duration-1000 z-10">
           <h1 className="text-5xl md:text-6xl font-extrabold mb-4 tracking-tight">
-            Hi, I'm <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">{personalInfo.name}</span>
+            Hi, I'm <StaggeredText text={personalInfo.name} className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600" />
           </h1>
           <h2 className="text-2xl md:text-3xl text-gray-400 mb-6 font-light">
             <TypewriterEffect texts={[personalInfo.role, "React Enthusiast", "Student", "Web Developer"]} />
@@ -131,7 +133,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProjects.map((project, index) => (
               <TiltCard key={index} className="h-full">
-                <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/10 hover:border-purple-500/50 group h-full flex flex-col">
+                <Spotlight className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/10 hover:border-purple-500/50 group h-full flex flex-col" spotlightColor="rgba(168, 85, 247, 0.2)">
                   <div className="h-48 relative overflow-hidden flex-shrink-0">
                     <Image
                       src={project.image}
@@ -162,7 +164,7 @@ export default function Home() {
                       </Link>
                     </div>
                   </div>
-                </div>
+                </Spotlight>
               </TiltCard>
             ))}
           </div>
