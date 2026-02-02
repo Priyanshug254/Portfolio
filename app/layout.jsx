@@ -31,6 +31,8 @@ export const metadata = {
 import { ScrollToTop } from "@/components/ScrollToTop"
 import { ScrollProgress } from "@/components/ScrollProgress"
 import { CustomCursor } from "@/components/CustomCursor"
+import { SmoothScroll } from "@/components/SmoothScroll"
+import { FloatingDock } from "@/components/FloatingDock"
 
 export default function RootLayout({ children }) {
   return (
@@ -39,6 +41,8 @@ export default function RootLayout({ children }) {
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           <ScrollProgress />
           <CustomCursor />
+          <SmoothScroll />
+          <FloatingDock />
           {children}
           <ScrollToTop />
         </ThemeProvider>
